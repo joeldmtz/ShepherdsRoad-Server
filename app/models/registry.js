@@ -6,8 +6,8 @@ var deepPopulate = require('mongoose-deep-populate');
 
 var registrySchema = new Schema({
 
-    regis_id { type: Number, required: true },
-    day : { type: Date, default: Date.now, required: true },
+    regis_id : { type: Number, required: true },
+    day : { type: Date, default: Date.now(), required: true },
     user : {
         type : Schema.Types.ObjectId,
         ref : 'User',
@@ -22,7 +22,7 @@ var registrySchema = new Schema({
     tripInfo : {
         trip : {
             type : Schema.Types.ObjectId,
-            ref: 'Trip'
+            ref: 'Trip',
             required: true
         },
         day : { type: Date, required: true },
@@ -35,7 +35,17 @@ var registrySchema = new Schema({
 registrySchema.plugin(autoIncrement.plugin, { model: 'Registry', field: 'regis_id', startAt : 1 });
 
 registrySchema.plugin(deepPopulate, {
-    whitelist: [ 'tripInfo.trip.route']
+    whitelist: [ 'tripInfo.trip.route'],
+    populate : {
+
+        'tripInfo.trip' : {
+            select : '-_id -__v'
+        },
+
+        'tripInfo.trip.route' : {
+            select : '-_id -__v'
+        }
+    }
 });
 
 var Registry = models.model('Registry', registrySchema);
