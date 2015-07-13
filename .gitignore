@@ -5,3 +5,6 @@ node_modules/
 *.rdb
 *.sublime-project
 *.sublime-workspace
+npm-debug.log
+.DS_Store
+/*.env
