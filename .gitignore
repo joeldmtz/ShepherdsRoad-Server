@@ -1,0 +1,7 @@
+# Igore Node Modules forlder
+node_modules/
+
+#
+*.rdb
+*.sublime-project
+*.sublime-workspace
