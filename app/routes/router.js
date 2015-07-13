@@ -10,6 +10,12 @@ var addUser = require(controllers + '/users/addUser'),
 var addRoute = require(controllers + '/routes/addRoute'),
     getRoutes = require(controllers + '/routes/getRoutes');
 
+var addTrip = require(controllers + '/trips/addTrip'),
+    getTrips = require(controllers + '/trips/getTrips');
+
+var addRegistry = require(controllers + '/registries/addRegistry'),
+    getRegistries = require(controllers + '/registries/getRegistries');
+
 router.route('/user/session')
     .post(logIn)
     .delete(logOut);
@@ -40,8 +46,8 @@ router.route('/user/:id')
     .delete()
 
 router.route('/trip')
-    .get()
-    .post()
+    .get(getTrips)
+    .post(addTrip);
 
 router.route('/trip/:id')
     .get()
@@ -49,34 +55,11 @@ router.route('/trip/:id')
     .delete()
 
 router.route('/sell')
-    .get()
-    .post()
+    .get(getRegistries)
+    .post(addRegistry);
 
 router.route('/sell/:serial')
     .get()
     .put()
-
-router.use(function (req, res){
-
-    if(req.z.length){
-
-        req.z.forEach(function (item){
-
-            delete item._id;
-            delete item.__v;
-
-        });
-
-    } else{
-
-        delete req.z._id;
-        delete req.z.__v;
-
-    }
-
-
-    res.send(req.z);
-
-});
 
 module.exports = router;
