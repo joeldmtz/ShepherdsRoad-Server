@@ -2,9 +2,10 @@ var User = require('../../models/user');
 
 var _ = require('underscore');
 
-var getUsers = function (req, res, next){
+var getUsers = function (req, res){
 
     User.find()
+    .select('-_id -__v')
     .sort('user_id')
     .exec(function (err, users){
 
@@ -18,8 +19,7 @@ var getUsers = function (req, res, next){
 
             });
 
-            req.z = usersAsJson;
-            next();
+            res.status(200).send(usersAsJson);
 
 
         } else {

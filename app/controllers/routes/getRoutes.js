@@ -2,10 +2,11 @@ var Route = require('../../models/route');
 
 var _ = require('underscore');
 
-var getRoutes = function (req, res, next){
+var getRoutes = function (req, res){
 
     Route.find()
-    .sort("route_id")
+    .sort('route_id')
+    .select('-_id -__v')
     .exec(function (err, routes){
 
         if(!err){
@@ -20,8 +21,7 @@ var getRoutes = function (req, res, next){
 
             });
 
-            req.z = routesAsJson;
-            next();
+            res.status(200).send(routesAsJson);
 
         } else {
 
