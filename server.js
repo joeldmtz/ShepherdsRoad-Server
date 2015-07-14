@@ -25,7 +25,8 @@ app.use(session({
     store: new RedisStore({
         host : config.db.session.host,
         port : config.db.session.port,
-        db: config.db.session.db
+        db: config.db.session.db,
+        pass : config.db.session.pass
     }),
     secret: config.db.session.secret,
     resave : true,

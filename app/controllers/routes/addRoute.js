@@ -1,7 +1,6 @@
 var Route = require('../../models/route');
 
 var addRoute = function (req, res){
-debugger;
 
     req.body.stopovers = { hasIt: true, places: ["Tepic"]};
 

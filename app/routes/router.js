@@ -16,21 +16,25 @@ var addTrip = require(controllers + '/trips/addTrip'),
 var addRegistry = require(controllers + '/registries/addRegistry'),
     getRegistries = require(controllers + '/registries/getRegistries');
 
+var addReport = require(controllers + '/reports/addReport'),
+    getReports = require(controllers + '/reports/getReports'),
+    getReport = require(controllers + '/reports/getReport');
+
 router.route('/user/session')
     .post(logIn)
     .delete(logOut);
 
-router.use(function (req, res, next){
+// router.use(function (req, res, next){
    
-   if(!req.session.user){
+//    if(!req.session.user){
 
-        res.status(403).send({ description : "You aren't loggedIn "});
-        return;
-   }
+//         res.status(403).send({ description : "You aren't loggedIn "});
+//         return;
+//    }
 
-   next();
+//    next();
 
-});
+// });
 
 router.route('/user')
     .post(addUser)
@@ -61,5 +65,12 @@ router.route('/sell')
 router.route('/sell/:serial')
     .get()
     .put()
+
+router.route('/report')
+    .get(getReports)
+    .post(addReport);
+
+router.route('/report/:yy/:mm/:dd')
+    .get(getReport);
 
 module.exports = router;

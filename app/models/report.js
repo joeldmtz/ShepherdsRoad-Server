@@ -8,7 +8,9 @@ var reportSchema = new Schema({
     day : { type : Date, required : true },
     registries : [{
         trip : { type : String, required : true},
+        day : { type : Date, required : true },
         seat : { type : Number, required : true},
+        user : { type : String, required : true},
         price : { type : Number, required : true}
     }],
     total : { type : Number, required : true },

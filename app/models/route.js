@@ -2,8 +2,6 @@ var models = require('./model').model,
     autoIncrement = require('./model').increment,
     Schema = models.Schema;
 
-var config = require('../../config');
-
 var routeSchema = new Schema({
 
     route_id : { type: Number, required: true },
@@ -19,11 +17,5 @@ var routeSchema = new Schema({
 routeSchema.plugin(autoIncrement.plugin, { model: 'Route', field: 'route_id', startAt: 1 });
 
 var Route = models.model('Route', routeSchema);
-
-//Route.virtual('price').get(function (){
-//
-//    return (this.stopovers.hasIt)?config.prices.base:config.prices.base*config.prices.expressBonus;
-//
-//});
 
 module.exports = Route;

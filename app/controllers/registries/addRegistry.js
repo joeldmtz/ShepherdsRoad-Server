@@ -2,6 +2,8 @@ var Registry = require('../../models/registry'),
     Trip = require('../../models/trip'),
     User = require('../../models/user');
 
+var prices = require('../../../prices');
+
 var addRegistry = function (req, res) {
 
     req.body.trip = { trip_id : 1 };
@@ -52,7 +54,8 @@ var addRegistry = function (req, res) {
                             trip : trip._id,
                             day : day,
                             seat : req.body.seat
-                        }
+                        },
+                        price : (trip.route.stopovers.hasIt)?prices.base:prices.base*prices.extra
 
                     });
 
@@ -78,7 +81,8 @@ var addRegistry = function (req, res) {
             if(user){
 
                 Trip.findOne({ trip_id : req.body.trip.trip_id })
-                .select("_id")
+                .select('_id route')
+                .populate('route', 'stopovers')
                 .exec(findTrip(user));
 
             } else {
