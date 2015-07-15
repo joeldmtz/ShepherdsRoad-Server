@@ -38,5 +38,5 @@ app.use(session({
 var router = require('./app/routes/router');
 app.use('/api/v1', router);
 
-server.listen(3000);
+server.listen(process.env.PORT || 5000);
 
