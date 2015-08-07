@@ -5,8 +5,8 @@ var models = require('./model').model,
 var routeSchema = new Schema({
 
     route_id : { type: Number, required: true },
-    from : { type: String, require: true},
-    toCity : { type: String, require: true},
+    from : { type: String, required: true},
+    toCity : { type: String, required: true},
     stopovers : {
         hasIt : { type: Boolean, required: true},
         places : [String]

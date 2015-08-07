@@ -8,10 +8,13 @@ var addUser = require(controllers + '/users/addUser'),
     logOut = require(controllers + '/users/logOut');
 
 var addRoute = require(controllers + '/routes/addRoute'),
-    getRoutes = require(controllers + '/routes/getRoutes');
+    getRoutes = require(controllers + '/routes/getRoutes')
+    getPlaces = require(controllers + '/routes/getPlaces');
 
 var addTrip = require(controllers + '/trips/addTrip'),
-    getTrips = require(controllers + '/trips/getTrips');
+    getTrips = require(controllers + '/trips/getTrips'),
+    getTripsByDate = require(controllers + '/trips/getTripsByDate'),
+    getSeatsAvailable = require(controllers + '/trips/getSeatsAvailable');
 
 var addRegistry = require(controllers + '/registries/addRegistry'),
     getRegistries = require(controllers + '/registries/getRegistries');
@@ -44,6 +47,9 @@ router.route('/route')
     .post(addRoute)
     .get(getRoutes);
 
+router.route('/route/place')
+    .get(getPlaces)
+
 router.route('/user/:id')
     .get()
     .put()
@@ -53,10 +59,16 @@ router.route('/trip')
     .get(getTrips)
     .post(addTrip);
 
+router.route('/trip/:yy/:mm/:dd')
+    .get(getTripsByDate);
+
 router.route('/trip/:id')
     .get()
     .put()
     .delete()
+
+router.route('/trip/:id/:yy/:mm/:dd')
+    .get(getSeatsAvailable);
 
 router.route('/sell')
     .get(getRegistries)

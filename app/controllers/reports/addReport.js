@@ -24,10 +24,15 @@ var addReport = function (req, res){
 
         var r = { day : date };
 
-        r.registries = _.map(registries, function (registry){
-            
-            rr = registry.toJSON();
-            if(rr.day > date){
+        r.registries = _.chain(registries)
+            .filter(function (registry) {
+                
+                rr = registry.toJSON();
+                return rr.day > date;
+            })
+            .map(registries, function (registry){
+                
+                rr = registry.toJSON();
 
                 total += rr.price;
 
@@ -45,11 +50,8 @@ var addReport = function (req, res){
                     price : rr.price,
                 };
 
-            }
 
-            return;
-
-        });
+            });
 
         r.day.setHours(23);
         r.day.setMinutes(59);

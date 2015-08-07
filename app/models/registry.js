@@ -25,6 +25,8 @@ var registrySchema = new Schema({
             ref: 'Trip',
             required: true
         },
+        from : { type: String, required: true},
+        toCity : { type: String, required: true},
         day : { type: Date, required: true },
         seat : { type: Number, required: true}
     },

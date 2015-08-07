@@ -3,8 +3,13 @@ var Trip = require('../../models/trip'),
 
 var addTrip = function (req, res){
 
-    req.body.route = { route_id: 1 };
-    req.body.depart = Date.now();
+    req.body.route = { route_id: req.body.route_id };
+    req.body.depart = new Date();
+
+    req.body.depart.setHours(req.body.hours);
+    req.body.depart.setMinutes(req.body.minutes);
+    req.body.depart.setSeconds(0);
+    req.body.depart.setMilliseconds(0);
 
     Route.findOne({ route_id : req.body.route.route_id})
     .select("_id")
