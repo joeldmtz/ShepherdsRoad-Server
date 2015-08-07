@@ -14,6 +14,6 @@ var config = {
     },
 }
 
-config.db.host = (process.env.NODE_ENV == 'DEBUG')?'mongodb://'+ process.env.MONGO_USER +':'+ process.env.MONGO_PASS +'@ds051738.mongolab.com:51738/shepherds-road':'mongodb://localhost/' + 'ShepherdsRoad';
+config.db.host = (process.env.NODE_ENV == 'DEBUG')?'mongodb://localhost/' + 'ShepherdsRoad':'mongodb://'+ process.env.MONGO_USER +':'+ process.env.MONGO_PASS +'@ds051738.mongolab.com:51738/shepherds-road';
 
 module.exports = config;
