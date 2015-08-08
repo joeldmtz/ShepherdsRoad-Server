@@ -41,6 +41,7 @@ var getSeatsAvailable = function (req, res) {
 
                             if(day == r.tripInfo.day){
                                 seatsAvailable[r.tripInfo.seat-1]=false;
+                                t.seats--;
                             }
 
                         });

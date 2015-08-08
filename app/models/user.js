@@ -5,6 +5,7 @@ var models = require('./model').model,
 var userSchema = new Schema({
 
     user_id : { type: Number, required: true},
+    pass : { type: String, required: true},
     user : { type: String, required: true },
     firstName : { type: String, required: true },
     lastName : { type: String, required: true }
