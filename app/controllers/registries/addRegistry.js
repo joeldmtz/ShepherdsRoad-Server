@@ -43,12 +43,15 @@ var addRegistry = function (req, res) {
                     var registry = new Registry({
 
                         user : user._id,
+                        day : req.body.day,
                         client : req.body.client,
                         serial : serial,
                         tripInfo : {
                             trip : trip._id,
-                            day : req.body.day,
-                            seat : req.body.seat
+                            from : req.body.tripInfo.from,
+                            toCity : req.body.tripInfo.toCity
+                            day : req.body.tripInfo.day,
+                            seat : req.body.tripInfo.seat
                         },
                         price : (trip.route.stopovers.hasIt)?prices.base:prices.base*prices.extra
 
