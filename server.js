@@ -17,7 +17,7 @@ app.use(logger(':remote-addr || :method :url || :status :res[content-length] || 
 app.use(cors());
 
 // Add POST, PUT, DELTE
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 app.use(methodOverride());
 
 //Sessions
