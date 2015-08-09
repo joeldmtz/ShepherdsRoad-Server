@@ -7,7 +7,7 @@ var addUser = function (req, res){
         user : req.body.user,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        pass : req.body.password || "hola"
+        password : req.body.password || "hola"
 
     });
 
