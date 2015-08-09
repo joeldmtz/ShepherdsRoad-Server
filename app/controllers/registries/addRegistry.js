@@ -75,7 +75,7 @@ var addRegistry = function (req, res) {
 
             if(user){
 
-                Trip.findOne({ trip_id : req.body.trip.trip_id })
+                Trip.findOne({ trip_id : req.body.tripInfo.trip.trip_id })
                 .select('_id route')
                 .populate('route', 'stopovers')
                 .exec(findTrip(user));
