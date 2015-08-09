@@ -5,7 +5,7 @@ var _ = require('underscore');
 var getUsers = function (req, res){
 
     User.find()
-    .select('-_id -__v -pass')
+    .select('-_id -__v -password')
     .sort('user_id')
     .exec(function (err, users){
 
