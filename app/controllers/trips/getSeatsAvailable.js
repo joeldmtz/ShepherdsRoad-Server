@@ -46,7 +46,12 @@ var getSeatsAvailable = function (req, res) {
 
                         });
                     
-                        res.status(200).send(seatsAvailable);
+                        res.status(200).send({
+
+                            seats : t.seats,
+                            list : seatsAvailable
+
+                        });
 
                     }
 

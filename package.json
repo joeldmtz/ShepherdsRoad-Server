@@ -1,8 +1,9 @@
 {
   "name": "shepherd_road",
   "version": "0.1.0",
-  "main" : "server.js",
+  "main": "server.js",
   "dependencies": {
+    "async": "^1.4.1",
     "body-parser": "^1.12.4",
     "connect-mongo": "^0.8.1",
     "connect-redis": "^2.3.0",
@@ -14,6 +15,8 @@
     "mongoose-auto-increment": "^4.0.0",
     "mongoose-deep-populate": "^1.1.0",
     "morgan": "^1.6.0",
+    "promise": "^7.0.4",
+    "request": "^2.60.0",
     "underscore": "^1.8.3"
   },
   "engines": {
