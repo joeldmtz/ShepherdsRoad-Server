@@ -49,7 +49,7 @@ var addRegistry = function (req, res) {
                         tripInfo : {
                             trip : trip._id,
                             from : req.body.tripInfo.from,
-                            toCity : req.body.tripInfo.toCity
+                            toCity : req.body.tripInfo.toCity,
                             day : req.body.tripInfo.day,
                             seat : req.body.tripInfo.seat
                         },
