@@ -3,6 +3,8 @@ var Registry = require('../../models/registry'),
 
 var _ = require('underscore');
 
+var ObjectId = require('mongoose').Types.ObjectId;
+
 var getSeatsAvailable = function (req, res) {
 
     var day = new Date();
@@ -25,7 +27,7 @@ var getSeatsAvailable = function (req, res) {
                     seatsAvailable[i]=true;
                 }
 
-                Registry.find({ tripInfo : { trip : trip._id }})
+                Registry.find({ 'tripInfo.trip' : t._id })
                 .select('tripInfo')
                 .deepPopulate('tripInfo.trip.route')
                 .sort('tripInfo.seat')
@@ -39,7 +41,11 @@ var getSeatsAvailable = function (req, res) {
 
                             r=registry.toJSON();
 
-                            if(day == r.tripInfo.day){
+                            var yy=r.tripInfo.day.getYear();
+                            var mm=r.tripInfo.day.getMonth();
+                            var dd=r.tripInfo.day.getDate();
+                            debugger;
+                            if(day.getYear() == yy && day.getMonth() == mm && day.getDate() == dd){
                                 seatsAvailable[r.tripInfo.seat-1]=false;
                                 t.seats--;
                             }
