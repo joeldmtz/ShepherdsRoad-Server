@@ -56,7 +56,7 @@ var addRegistry = function (req, res) {
                         price : (trip.route.stopovers.hasIt)?prices.base:prices.base*prices.extra
 
                     });
-
+                    
                     add(registry);
 
                     

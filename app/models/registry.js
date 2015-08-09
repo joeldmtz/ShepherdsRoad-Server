@@ -7,7 +7,7 @@ var deepPopulate = require('mongoose-deep-populate');
 var registrySchema = new Schema({
 
     regis_id : { type: Number, required: true },
-    day : { type: Date, default: Date.now(), required: true },
+    day : { type: Date, required: true },
     user : {
         type : Schema.Types.ObjectId,
         ref : 'User',
