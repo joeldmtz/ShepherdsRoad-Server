@@ -4,7 +4,7 @@ var _ = require('underscore');
 
 var getTrips = function (req, res){
 
-    var query=null;
+    var query={};
 
     if(req.params.user == 'admin'){
         query = { active : true };
