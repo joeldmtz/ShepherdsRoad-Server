@@ -6,7 +6,7 @@ var getReports = function (req, res){
 
     Report.find()
     .select('-_id -__v')
-    .sort('day')
+    .sort('-day')
     .exec(function (err, reports){
 
         if(!err){

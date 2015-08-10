@@ -6,8 +6,8 @@ var getReport = function (req, res){
 
     var date = new Date();
 
-    date.setFullYear(req.params.yy);
-    date.setMonth(req.params.mm);
+    date.setYear(req.params.yy);
+    date.setMonth(req.params.mm-1);
     date.setDate(req.params.dd);
 
     date.setHours(23);
@@ -15,22 +15,31 @@ var getReport = function (req, res){
     date.setSeconds(59);
     date.setMilliseconds(0);
 
-    Report.findOne({ day : date })
+    Report.find()
     .select('-_id -__v')
-    .exec(function (err, report){
+    .exec(function (err, reports){
 
+        
         if(!err){
 
-            if(report){
+            var r, dd, mm, yy;
+            var reportAsJson;
 
-                res.status(200).send(report.toJSON());
-                
-            } else {
-                
-                res.status(404).send();
+            _.each(reports, function (report){
+                r=report.toJSON();
 
-            }
+                yy=r.day.getYear();
+                mm=r.day.getMonth();
+                dd=r.day.getDate();
 
+                if(date.getYear() == yy && date.getMonth() == mm && date.getDate() == dd){
+                    reportAsJson = r;
+                }
+
+            })
+
+            res.status(200).send(reportAsJson);
+            
 
         } else{
             res.status(500).send(err);
