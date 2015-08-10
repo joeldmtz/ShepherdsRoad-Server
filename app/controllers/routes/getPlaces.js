@@ -4,7 +4,7 @@ var _ = require('underscore');
 
 var getPlaces = function (req, res) {
     
-    Route.find()
+    Route.find({ active : true })
     .select('stopovers from toCity')
     .exec(function (err, routes){
 

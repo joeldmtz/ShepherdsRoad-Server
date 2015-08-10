@@ -35,8 +35,11 @@ app.use(session({
 
 
 //Routes
-var router = require('./app/routes/router');
+var router = require('./app/routes/router'),
+    adminRouter = require('./app/routes/admin');
+
 app.use('/api/v1', router);
+app.use('/api/v1/admin', adminRouter)
 
 server.listen(process.env.PORT || 5000);
 

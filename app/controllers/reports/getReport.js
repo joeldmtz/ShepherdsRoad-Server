@@ -23,7 +23,7 @@ var getReport = function (req, res){
         if(!err){
 
             var r, dd, mm, yy;
-            var reportAsJson=0;
+            var reportAsJson;
 
             _.each(reports, function (report){
                 r=report.toJSON();

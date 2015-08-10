@@ -8,7 +8,7 @@ var getRegistries = function (req, res, next){
     .select('-_id -__v')
     .populate('user', '-_id -__v')
     .deepPopulate('tripInfo.trip.route')
-    .sort('-date')
+    .sort('-day')
     .exec(function (err, registries){
 
         if(!err){

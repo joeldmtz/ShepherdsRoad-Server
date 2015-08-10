@@ -4,7 +4,13 @@ var _ = require('underscore');
 
 var getRoutes = function (req, res){
 
-    Route.find()
+    var query=null;
+
+    if(req.params.user == 'admin'){
+        query = { active : true };
+    }
+
+    Route.find(query)
     .sort('route_id')
     .select('-_id -__v')
     .exec(function (err, routes){

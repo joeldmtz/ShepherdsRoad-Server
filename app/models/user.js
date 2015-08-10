@@ -8,7 +8,8 @@ var userSchema = new Schema({
     password : { type: String, required: true},
     user : { type: String, required: true },
     firstName : { type: String, required: true },
-    lastName : { type: String, required: true }
+    lastName : { type: String, required: true },
+    active : { type : Boolean, default: true, required : true }
 
 });
 

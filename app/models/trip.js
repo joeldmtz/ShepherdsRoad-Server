@@ -11,7 +11,9 @@ var tripSchema = new Schema({
         type : Schema.Types.ObjectId,
         ref : 'Route' 
     },
-    seats : { type: Number, default: 32, required: true }
+    seats : { type: Number, default: 32, required: true },
+    active : { type : Boolean, default: true, required : true },
+    price : { type: Number, required: true }
 
 
 });

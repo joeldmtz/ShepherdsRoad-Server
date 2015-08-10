@@ -4,13 +4,19 @@ var _ = require('underscore');
 
 var getTripsByDate = function (req, res){
 
+    var query=null;
+
+    if(req.params.user == 'admin'){
+        query = { active : true };
+    }
+
     var day = new Date(), today = new Date();
 
     day.setYear(req.params.yy);
     day.setMonth(req.params.mm-1);
     day.setDate(req.params.dd);
 
-    Trip.find()
+    Trip.find(query)
     .select('-_id -__v')
     .sort('depart')
     .populate('route', '-_id -__v')

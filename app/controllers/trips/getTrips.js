@@ -4,7 +4,13 @@ var _ = require('underscore');
 
 var getTrips = function (req, res){
 
-    Trip.find()
+    var query=null;
+
+    if(req.params.user == 'admin'){
+        query = { active : true };
+    }
+
+    Trip.find(query)
     .select('-_id -__v')
     .sort('trip_id')
     .populate('route', '-_id -__v')

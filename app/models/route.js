@@ -10,7 +10,8 @@ var routeSchema = new Schema({
     stopovers : {
         hasIt : { type: Boolean, required: true},
         places : [String]
-    }
+    },
+    active : { type : Boolean, default: true, required : true }
 
 });
 
