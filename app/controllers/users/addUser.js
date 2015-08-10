@@ -1,7 +1,6 @@
 var User = require('../../models/user');
 
 var addUser = function (req, res){
-debugger;
     var user = new User({
 
         user : req.body.user,
@@ -10,7 +9,7 @@ debugger;
         password : req.body.password || "hola"
 
     });
-    req.session.user = "Hoal";
+    
     user.save(function (err){
 
         if(!err){
