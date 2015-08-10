@@ -4,6 +4,17 @@ var _ = require('underscore');
 
 var getReport = function (req, res){
 
+    var date = new Date();
+
+    date.setYear(req.params.yy);
+    date.setMonth(req.params.mm-1);
+    date.setDate(req.params.dd);
+
+    date.setHours(23);
+    date.setMinutes(59);
+    date.setSeconds(59);
+    date.setMilliseconds(0);
+
     Report.find()
     .select('-_id -__v')
     .exec(function (err, reports){
@@ -12,7 +23,7 @@ var getReport = function (req, res){
         if(!err){
 
             var r, dd, mm, yy;
-            var reportAsJson;
+            var reportAsJson=0;
 
             _.each(reports, function (report){
                 r=report.toJSON();
@@ -21,7 +32,7 @@ var getReport = function (req, res){
                 mm=r.day.getMonth();
                 dd=r.day.getDate();
 
-                if(req.params.yy == yy && req.params.mm-1 == mm && req.params.dd == dd){
+                if(date.getYear() == yy && date.getMonth() == mm && date.getDate() == dd){
                     reportAsJson = r;
                 }
 
