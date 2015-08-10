@@ -7,15 +7,20 @@ var reportSchema = new Schema({
     report_id : { type : Number, required : true },
     day : { type : Date, required : true },
     registries : [{
+        regis_id : { type : Number },
         trip : { type : String},
+        depart : { type : Date },
         day : { type : Date},
         seat : { type : Number},
         user : { type : String},
         price : { type : Number}
     }],
     total : { type : Number, required : true },
-    totalTrips: [{
+    totalTrips : { type : Number, required : true },
+    trips: [{
+        trip_id : { type : Number},
         trip : { type : String},
+        depart : { type : Date },
         total : { type : Number}
     }]
 

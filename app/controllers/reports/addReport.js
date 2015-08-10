@@ -20,7 +20,7 @@ var addReport = function (req, res){
     .sort('day')
     .exec(function (err, registries){
 
-        var total=0, totalTrips=[], rr, time, name;
+        var total=0, trips=[], rr, time, name, totalTrips=0;
 
         var r = { day : date };
 
@@ -30,20 +30,22 @@ var addReport = function (req, res){
                 rr = registry.toJSON();
                 return rr.day > date;
             })
-            .map(registries, function (registry){
+            .map(function (registry){
                 
                 rr = registry.toJSON();
 
                 total += rr.price;
 
-                time = rr.day.toTimeString().split(' ')[0];
-                name = rr.tripInfo.trip.route.from + ' - ' + rr.tripInfo.trip.route.toCity + ' ' + time;
+                name = rr.tripInfo.trip.route.from + ' - ' + rr.tripInfo.trip.route.toCity;
 
-                totalTrips[rr.tripInfo.trip.trip_id-1] = totalTrips[rr.tripInfo.trip.trip_id-1] || { trip : name, total : 0 };
-                totalTrips[rr.tripInfo.trip.trip_id-1].total++;
+                trips[rr.tripInfo.trip.trip_id-1] = trips[rr.tripInfo.trip.trip_id-1] || { trip_id : rr.tripInfo.trip.trip_id, trip : name, depart : rr.tripInfo.trip.depart, total : 0 };
+                trips[rr.tripInfo.trip.trip_id-1].total++;
 
+                totalTrips++;
                 return {
+                    regis_id : rr.regis_id,
                     trip : name,
+                    depart: rr.tripInfo.trip.depart,
                     day : rr.tripInfo.day,
                     seat : rr.tripInfo.seat,
                     user : rr.client.firstName + ' ' + rr.client.lastName,
@@ -51,7 +53,8 @@ var addReport = function (req, res){
                 };
 
 
-            });
+            })
+            .value();
 
         r.day.setHours(23);
         r.day.setMinutes(59);
@@ -59,6 +62,10 @@ var addReport = function (req, res){
 
         r.total = total;
         r.totalTrips = totalTrips;
+        r.trips = trips;
+
+        r.registries = _.compact(r.registries);
+        r.trips = _.compact(r.trips);
 
         var report = new Report(r);
 
