@@ -28,31 +28,29 @@ var reportSchema = new Schema({
     day : { type : Date, required : true },
     registries : [{
 
-        regis_id : { type: Number, required: true },
-        day : { type: Date, required: true },
+        regis_id : { type: Number },
+        day : { type: Date },
         user : {
             type : Schema.Types.ObjectId,
-            ref : 'User',
-            required : true
+            ref : 'User'
         },
         client : {
-            firstName : { type: String, required: true},
-            lastName: { type: String, require: true}
+            firstName : { type: String ,
+            lastName: { type: String }
         },
-        serial : { type: String, required: true},
+        serial : { type: String },
 
         tripInfo : {
             trip : {
                 type : Schema.Types.ObjectId,
-                ref: 'Trip',
-                required: true
+                ref: 'Trip'
             },
-            from : { type: String, required: true},
-            toCity : { type: String, required: true},
-            day : { type: Date, required: true },
-            seat : { type: Number, required: true}
+            from : { type: String },
+            toCity : { type: String },
+            day : { type: Date },
+            seat : { type: Number }
         },
-        price : { type: Number, required: true }
+        price : { type: Number }
 
 
     }],
@@ -60,16 +58,16 @@ var reportSchema = new Schema({
     totalTrips : { type : Number, required : true },
     trips: [{
 
-        trip_id : { type: Number, required: true },
-        depart : { type: Date, required: true },
+        trip_id : { type: Number },
+        depart : { type: Date },
         route : {
             type : Schema.Types.ObjectId,
             ref : 'Route' 
         },
-        seats : { type: Number, default: 32, required: true },
-        active : { type : Boolean, default: true, required : true },
-        price : { type: Number, required: true },
-        total : { type: Number, required: true }
+        seats : { type: Number, default: 32 },
+        active : { type : Boolean, default: true },
+        price : { type: Number },
+        total : { type: Number }
 
 
     }]
