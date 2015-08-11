@@ -35,7 +35,7 @@ var reportSchema = new Schema({
             ref : 'User'
         },
         client : {
-            firstName : { type: String ,
+            firstName : { type: String } ,
             lastName: { type: String }
         },
         serial : { type: String },
