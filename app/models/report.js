@@ -85,8 +85,16 @@ var reportSchema = new Schema({
         trip_id : { type: Number },
         depart : { type: Date },
         route : {
-            type : Schema.Types.ObjectId,
-            ref : 'Route' 
+
+            route_id : { type: Number },
+            from : { type: String },
+            toCity : { type: String },
+            stopovers : {
+                hasIt : { type: Boolean },
+                places : [String]
+            },
+            active : { type : Boolean, default: true }
+
         },
         seats : { type: Number, default: 32 },
         active : { type : Boolean, default: true },
