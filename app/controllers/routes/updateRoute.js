@@ -9,6 +9,9 @@ var updateRoute = function (req, res){
 
             if(route){
 
+                route.from = req.body.from;
+                route.toCity = req.body.toCity;
+                route.stopovers = req.body.stopovers;
                 route.active = true;
 
                 route.save(function (err){

@@ -38,19 +38,13 @@ var addReport = function (req, res){
 
                 name = rr.tripInfo.trip.route.from + ' - ' + rr.tripInfo.trip.route.toCity;
 
-                trips[rr.tripInfo.trip.trip_id-1] = trips[rr.tripInfo.trip.trip_id-1] || { trip_id : rr.tripInfo.trip.trip_id, trip : name, depart : rr.tripInfo.trip.depart, total : 0 };
+                trips[rr.tripInfo.trip.trip_id-1] = trips[rr.tripInfo.trip.trip_id-1] || rr.tripInfo.trip;
+                trips[rr.tripInfo.trip.trip_id-1].total = trips[rr.tripInfo.trip.trip_id-1].total || 0;
+
                 trips[rr.tripInfo.trip.trip_id-1].total++;
 
                 totalTrips++;
-                return {
-                    regis_id : rr.regis_id,
-                    trip : name,
-                    depart: rr.tripInfo.trip.depart,
-                    day : rr.tripInfo.day,
-                    seat : rr.tripInfo.seat,
-                    user : rr.client.firstName + ' ' + rr.client.lastName,
-                    price : rr.price,
-                };
+                return rr;
 
 
             })

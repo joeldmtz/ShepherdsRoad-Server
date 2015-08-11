@@ -9,6 +9,10 @@ var updateUser = function (req, res){
 
             if(user){
 
+                user.firstName = req.body.firstName;
+                user.lastName = req.body.lastName;
+                user.user = req.body.user;
+                user.password = req.body.password;
                 user.active = true;
 
                 user.save(function (err){

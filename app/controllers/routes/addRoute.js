@@ -2,8 +2,6 @@ var Route = require('../../models/route');
 
 var addRoute = function (req, res){
 
-    req.body.stopovers = { hasIt: true, places: ["Tepic"]};
-
     var r = {
         from : req.body.from,
         toCity : req.body.toCity,
