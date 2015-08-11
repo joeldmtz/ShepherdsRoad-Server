@@ -32,11 +32,11 @@ var reportSchema = new Schema({
         day : { type: Date },
         user : {
 
-            user_id : { type: Number }
-            password : { type: String }
-            user : { type: String }
-            firstName : { type: String }
-            lastName : { type: String }
+            user_id : { type: Number },
+            password : { type: String },
+            user : { type: String },
+            firstName : { type: String },
+            lastName : { type: String },
             active : { type : Boolean, default: true }
 
         },
