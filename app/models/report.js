@@ -31,8 +31,14 @@ var reportSchema = new Schema({
         regis_id : { type: Number },
         day : { type: Date },
         user : {
-            type : Schema.Types.ObjectId,
-            ref : 'User'
+
+            user_id : { type: Number }
+            password : { type: String }
+            user : { type: String }
+            firstName : { type: String }
+            lastName : { type: String }
+            active : { type : Boolean, default: true }
+
         },
         client : {
             firstName : { type: String } ,
@@ -42,8 +48,26 @@ var reportSchema = new Schema({
 
         tripInfo : {
             trip : {
-                type : Schema.Types.ObjectId,
-                ref: 'Trip'
+
+                trip_id : { type: Number },
+                depart : { type: Date },
+                route : {
+
+                    route_id : { type: Number },
+                    from : { type: String },
+                    toCity : { type: String },
+                    stopovers : {
+                        hasIt : { type: Boolean },
+                        places : [String]
+                    },
+                    active : { type : Boolean, default: true }
+
+                },
+                seats : { type: Number, default: 32 },
+                active : { type : Boolean, default: true },
+                price : { type: Number }
+
+
             },
             from : { type: String },
             toCity : { type: String },
