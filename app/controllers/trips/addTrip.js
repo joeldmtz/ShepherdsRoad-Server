@@ -20,6 +20,7 @@ var addTrip = function (req, res){
 
                     depart : req.body.depart,
                     route : route._id,
+                    price : req.body.price
 
                 }
 
