@@ -18,7 +18,7 @@ var updateTrip = function (req, res){
 
                         if(route){
 
-                            trip.depart = req.bosy.depart;
+                            trip.depart = req.body.depart;
                             trip.route = route._id;
                             trip.seats = req.body.seats;
                             trip.price = req.body.price;
