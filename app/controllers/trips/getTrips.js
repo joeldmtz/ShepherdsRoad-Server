@@ -6,7 +6,7 @@ var getTrips = function (req, res){
 
     var query={};
 
-    if(req.params.user == 'admin'){
+    if(req.params.user != 'admin'){
         query = { active : true };
     }
 
