@@ -4,9 +4,9 @@ var _ = require('underscore');
 
 var getTripsByDate = function (req, res){
 
-    var query=null;
+    var query={};
 
-    if(req.params.user == 'admin'){
+    if(req.params.user != 'admin'){
         query = { active : true };
     }
 
