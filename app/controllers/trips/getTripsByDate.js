@@ -35,7 +35,7 @@ var getTripsByDate = function (req, res){
                     t.depart.setMonth(day.getMonth());
                     t.depart.setDate(day.getDate());
                     
-                    return t.depart >= today;
+                    return !(t.depart < today);
 
                 })
                 .map(function (trip){
