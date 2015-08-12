@@ -2,30 +2,44 @@ var User = require('../../models/user');
 
 var logIn = function (req, res) {
     
-    User.findOne({ user : req.body.user }, function (err, user){
+    if(req.params.user == 'admin'){
 
-        if(!err){
+        if(req.params.pass == 'ppedro'){
+            res.status(200).send({
+                user : 'admin'
+            });
+        } else {
+            res.status(403).send();
+        }
 
-            if(user){
+    } else {
 
-                if(!req.session.user){
+        User.findOne({ user : req.params.user }, function (err, user){
 
-                    req.session.user = req.body.user;
-                    res.status(200).send({ description : 'OK'});
+            if(!err){
+
+                if(user){
+
+                    if(user.toJSON().password == req.params.pass){
+
+                        res.status(200).send(user.toJSON());
+
+                    } else {
+                        res.status(403).send();
+                    }
 
                 } else {
-                    res.status(401).send({ description : 'User is already loggedIn'});                    
+                    res.status(404).send();
                 }
 
             } else {
-                res.status(404).send({ description : 'User not found'});
+                res.status(500).send(err);
             }
 
-        } else {
-            res.status(500).send(err);
-        }
+        });
+        
+    }
 
-    });
 
 };
 

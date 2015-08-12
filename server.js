@@ -2,8 +2,8 @@ var express = require('express'),
     logger  = require('morgan'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    session = require('express-session'),
-    RedisStore = require("connect-redis")(session),
+    // session = require('express-session'),
+    // RedisStore = require("connect-redis")(session),
     cors = require('cors');
 
 var config = require('./config');
@@ -21,17 +21,17 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //Sessions
-app.use(session({
-    store: new RedisStore({
-        host : config.db.session.host,
-        port : config.db.session.port,
-        db: config.db.session.db,
-        pass : config.db.session.pass
-    }),
-    secret: config.db.session.secret,
-    resave : true,
-    saveUninitialized : true
-}));
+// app.use(session({
+//     store: new RedisStore({
+//         host : config.db.session.host,
+//         port : config.db.session.port,
+//         db: config.db.session.db,
+//         pass : config.db.session.pass
+//     }),
+//     secret: config.db.session.secret,
+//     resave : true,
+//     saveUninitialized : true
+// }));
 
 
 //Routes

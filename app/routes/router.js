@@ -2,8 +2,8 @@ var controllers = '../controllers'
 
 var router = require('express').Router();
 
-var logIn = require(controllers + '/users/logIn'),
-    logOut = require(controllers + '/users/logOut');
+ var logIn = require(controllers + '/users/logIn');
+//     logOut = require(controllers + '/users/logOut');
 
 var getRoutes = require(controllers + '/routes/getRoutes')
     getPlaces = require(controllers + '/routes/getPlaces');
@@ -19,9 +19,9 @@ var addRegistry = require(controllers + '/registries/addRegistry'),
 var getReports = require(controllers + '/reports/getReports'),
     getReport = require(controllers + '/reports/getReport');
 
-router.route('/user/session')
-    .post(logIn)
-    .delete(logOut);
+
+router.route('/session/:user/:pass')
+    .get(logIn);
 
 // router.use(function (req, res, next){
    

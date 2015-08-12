@@ -18,7 +18,6 @@ var updateUser = function (req, res){
                 user.save(function (err){
 
                     if(!err){
-
                         res.status(200).send({ description : 'OK' });
                     } else {
 
@@ -30,7 +29,7 @@ var updateUser = function (req, res){
                 
             } else {
 
-                res.status(200).send({ description : 'OK' });
+                res.status(404).send();
             }
 
             
