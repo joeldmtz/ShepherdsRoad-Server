@@ -6,7 +6,7 @@ var prices = require('../../../prices');
 
 var addRegistry = function (req, res) {
 
-    var serial = req.body.day.toString() + '-' + req.body.client.lastName[0] + req.body.client.firstName[0];
+    var serial = Date.now.toString() + '-' + req.body.client.lastName[0] + req.body.client.firstName[0];
 
     var add = function(regis){
 
