@@ -2,8 +2,6 @@ var Registry = require('../../models/registry'),
     Trip = require('../../models/trip'),
     User = require('../../models/user');
 
-var prices = require('../../../prices');
-
 var addRegistry = function (req, res) {
 
     var serial = Date.now().toString() + '-' + req.body.client.lastName[0] + req.body.client.firstName[0];
@@ -53,7 +51,7 @@ var addRegistry = function (req, res) {
                             day : req.body.tripInfo.day,
                             seat : req.body.tripInfo.seat
                         },
-                        price : (trip.route.stopovers.hasIt)?prices.base:prices.base*prices.extra
+                        price : req.body.price
 
                     });
                     
