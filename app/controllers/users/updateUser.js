@@ -12,7 +12,7 @@ var updateUser = function (req, res){
                 user.firstName = req.body.firstName;
                 user.lastName = req.body.lastName;
                 user.user = req.body.user;
-                user.password = req.body.password;
+                user.password = req.body.password || user.password;
                 user.active = true;
 
                 user.save(function (err){
