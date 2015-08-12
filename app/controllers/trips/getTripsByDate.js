@@ -10,7 +10,7 @@ var getTripsByDate = function (req, res){
         query = { active : true };
     }
 
-    var day = new Date(), today = Date.now();
+    var day = new Date(), today =  Date();
 
     day.setYear(req.params.yy);
     day.setMonth(req.params.mm-1);

@@ -20,7 +20,7 @@ var updateTrip = function (req, res){
 
                             trip.depart = req.body.depart;
                             trip.route = route._id;
-                            trip.seats = req.body.seats;
+                            trip.seats = req.body.seats || 32;
                             trip.price = req.body.price;
 
                             trip.active = true;
