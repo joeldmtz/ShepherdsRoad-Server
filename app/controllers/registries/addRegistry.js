@@ -6,7 +6,7 @@ var prices = require('../../../prices');
 
 var addRegistry = function (req, res) {
 
-    var serial = Date.now().toString() + '-' + req.body.client.lastName[0] + req.body.client.firstName[0];
+    var serial = req.body.day.toString() + '-' + req.body.client.lastName[0] + req.body.client.firstName[0];
 
     var add = function(regis){
 
@@ -17,7 +17,7 @@ var addRegistry = function (req, res) {
                 regis.nextCount(function (err){
 
                     if(!err){
-                        res.status(200).send({ description : 'OK'});
+                        res.status(200).send(regis.toJSON().serial);
 
                     } else {
                         res.status(500).send(err);
